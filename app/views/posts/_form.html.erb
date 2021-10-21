@@ -11,17 +11,26 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :city %>
-    <%= form.text_field :city %>
+  <div class="field form-group">
+    <% form.label :city %>
+    <%= form.text_field :city, class:"form-control", placeholder:"City" %>
   </div>
 
-  <div class="field">
-    <%= form.label :note %>
-    <%= form.text_area :note %>
+  <div class="field form-group">
+     <%= form.text_field :note, class:"form-control", placeholder:"Note" %>
   </div>
 
+  <div class="field form-group">  
+    <%= form.number_field :user_id, id: :post_user_id, class:"form-control", value: current_user.id, type: :hidden %>
+  </div>
+  
+<br/>
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class:'btn btn-secondary'%>
   </div>
+
+  
+
+</div>
+
 <% end %>

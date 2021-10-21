@@ -1,14 +1,17 @@
-<p id="notice"><%= notice %></p>
+<div class="jumbotron">
+  <h1 class="display-4">
+    <%= @post.city %>
 
-<p>
-  <strong>City:</strong>
-  <%= @post.city %>
-</p>
+  </h1>
+  <p class="lead">
+    <%= @post.note %>  | 
 
-<p>
-  <strong>Note:</strong>
-  <%= @post.note %>
-</p>
+  </p>
+  <br/>
 
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+<%= link_to 'Edit', edit_post_path(@post), class:"btn btn-secondary" %>
+<%= link_to 'Delete', @post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+   
+<%= link_to 'Back', posts_path, class:"btn btn-dark" %>
+
+</div>
