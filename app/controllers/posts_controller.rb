@@ -13,7 +13,9 @@ class PostsController < ApplicationController
   # GET /posts/new
   def new
     #@post = Post.new
+
     @post = current_user.posts.build
+
   end
 
   # GET /posts/1/edit
@@ -24,8 +26,14 @@ class PostsController < ApplicationController
   def create
     
     @post = current_user.posts.build(post_params)
-
-
+    
+    require 'net/http'
+    city = CGI.escape(@post.city)
+    uri = URI("https://api.openweathermap.org/data/2.5/weather?q=#{city}&appid=#{apikey}&units=metric")
+    response = Net::HTTP.get_response(uri)
+    @post.temp = JSON.parse(response.body)["main"]["temp"]
+    
+    
     respond_to do |format|
       if @post.save
         format.html { redirect_to @post, notice: "Post was successfully created." }
