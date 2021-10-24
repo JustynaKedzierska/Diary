@@ -32,6 +32,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'devise'
 
 gem 'activerecord-session_store'
+#gem "devise", github: "heartcombo/devise", branch: "master"
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 

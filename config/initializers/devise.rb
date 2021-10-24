@@ -276,7 +276,7 @@ Devise.setup do |config|
   # config.omniauth :google_oauth2, Rails.application.credentials.dig(:google, :google_client_id),
   # Rails.application.credentials.dig(:google, :google_client_secret), scope: 'userinfo.email, userinfo.profile', skip_jwt: true
 
-  config.omniauth :google_oauth2, ENV['GOOGLE_CLIENT_ID'], ENV['GOOGLE_CLIENT_SECRET'], {}
+  config.omniauth :google_oauth2, ENV['GOOGLE_CLIENT_ID'], ENV['GOOGLE_CLIENT_SECRET'], scope: 'userinfo.email, userinfo.profile', skip_jwt: true
 
   #google_client_id = Rails.application.credentials.google_oauth2[:client_id]
   #google_client_secret = Rails.application.credentials.google_oauth2[:client_secret]
