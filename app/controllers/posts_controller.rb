@@ -3,19 +3,20 @@ class PostsController < ApplicationController
   
   # GET /posts or /posts.json
   def index
-    @posts = current_user.posts
-  end
+    @posts = current_user.posts   
+
+ end
 
   # GET /posts/1 or /posts/1.json 
   def show
+
   end
 
   # GET /posts/new
   def new
     #@post = Post.new
-
     @post = current_user.posts.build
-
+    #@posts = current_user.posts
   end
 
   # GET /posts/1/edit
@@ -24,13 +25,13 @@ class PostsController < ApplicationController
 
   # POST /posts or /posts.json
   def create
-    
     @post = current_user.posts.build(post_params)
     
     require 'net/http'
     city = CGI.escape(@post.city)
-    uri = URI("https://api.openweathermap.org/data/2.5/weather?q=#{city}&appid=#{apikey}&units=metric")
+    uri = URI("https://api.openweathermap.org/data/2.5/weather?q=#{city}&appid=#{Rails.application.credentials.apikey}&units=metric")
     response = Net::HTTP.get_response(uri)
+    #puts response.body
     @post.temp = JSON.parse(response.body)["main"]["temp"]
     
     
